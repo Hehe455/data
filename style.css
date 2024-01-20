@@ -1,0 +1,44 @@
+/* styles.css */
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.timestamp-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.timestamp-card:hover {
+    transform: scale(1.05);
+}
+
+.timestamp-card p {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.timestamp-card.expanded {
+    height: auto;
+}
+
+.timestamp-card.expanded p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.timestamp-card.expanded:hover {
+    transform: none;
+}
