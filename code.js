@@ -48,21 +48,25 @@ function renderTimestampCard(data) {
     card.classList.add('timestamp-card');
 
     const originalTimestamp = data.timestamp.toDate();
+    const originalText = data.text; // Assuming the field containing the text is 'text'
+
     card.innerHTML = `<p>${formatTimestamp(originalTimestamp)}</p>`;
     
     card.addEventListener('click', () => {
+        // Toggle the state before updating the card content
+        detailedTimestamp = !detailedTimestamp;
+
+        // Update the card content with the timestamp and optional text
         if (detailedTimestamp) {
-            // Show the original timestamp on the second tap
-            card.innerHTML = `<p>${formatTimestamp(originalTimestamp)}</p>`;
+            card.innerHTML = `<p>${originalTimestamp.toLocaleString()}</p><p>${originalText}</p>`;
         } else {
-            // Show the detailed timestamp on the first tap
-            card.innerHTML = `<p>${originalTimestamp.toLocaleString()}</p>`;
+            card.innerHTML = `<p>${formatTimestamp(originalTimestamp)}</p>`;
         }
-        detailedTimestamp = !detailedTimestamp; // Toggle the state
     });
 
     container.appendChild(card);
 }
+
 
 // Fetch data from Firestore and sort by timestamp (recent first)
 db.collection('use').orderBy('timestamp', 'desc').get()
